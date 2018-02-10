@@ -1,0 +1,34 @@
+Configutation:
+  name: Default
+
+  Properties:
+    Property:
+        - name: log-path
+          value: "logs"
+        - name: log-pattern-second
+          value: "%d{yyyy-MM-dd HH:mm:ss.SSS} %5p ${hostName} --- [%15.15t] %-40.40c{1} : %m%n%ex"
+        - name: log-pattern
+          value: "[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n"
+          #value: "[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} %l{1} - %msg%n"
+  Appenders:
+    Console:
+      - name: Console_Appender
+        target: SYSTEM_OUT
+        PatternLayout:
+          pattern: ${log-pattern}
+      - name: Console_Appender1
+        target: SYSTEM_OUT
+        PatternLayout:
+          pattern: ${log-pattern-second}
+  Loggers:
+      #Root:
+        #level: debug
+        #AppenderRef:
+          #- ref: Console_Appender
+          #- ref: Console_Appender1
+      AsyncRoot:
+        level: trace
+        includeLocation: true
+        AppenderRef:
+          - ref: Console_Appender
+          #- ref: Console_Appender1

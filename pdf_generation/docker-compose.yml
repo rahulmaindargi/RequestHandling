@@ -1,0 +1,7 @@
+version: "3"
+services:
+  pdfgeneration:
+    build: .
+    image: pdfgeneration:1
+    ports:
+    - "8081:80"
